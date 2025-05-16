@@ -1,0 +1,57 @@
+[
+  {
+    "tituloReseña": "Un retrato eterno del amor",
+    "autor": "Gabriel García Márquez ",
+    "resena": "Una obra maestra que explora el amor en todas sus formas: paciente, obsesivo, nostálgico. Márquez construye una historia que perdura en el tiempo con una prosa poética y envolvente.",
+    "categoria": "Romance",
+    "puntuacion": 1,
+    "tituloLibro": "El amor en los tiempos del cólera",
+    "imagen": "https://firebasestorage.googleapis.com/v0/b/unniconet.appspot.com/o/imagenes%2F1747353022677_El%20amor%20en%20los%20tiempos%20del%20c%C3%B3lera.jpg?alt=media&token=487c8d13-5564-4d4f-8e6b-0cfc5471d342",
+    "id": 1747353023529,
+    "fecha": "2025-05-15T23:50:23.529Z"
+  },
+  {
+    "tituloReseña": "Una historia que atrapa",
+    "autor": "Dolores Redondo",
+    "resena": "Desde la primera página, este libro me mantuvo cautivado. La narrativa es fluida y los personajes están muy bien construidos.",
+    "categoria": "Misterio",
+    "puntuacion": 4,
+    "tituloLibro": "El legado de los huesos",
+    "imagen": "https://firebasestorage.googleapis.com/v0/b/unniconet.appspot.com/o/imagenes%2F1747353121049_El%20legado%20de%20los%20huesos.jpg?alt=media&token=774c29ac-6ed3-4729-8e32-0fb54e939c72",
+    "id": 1747353122846,
+    "fecha": "2025-05-15T23:52:02.846Z"
+  },
+  {
+    "tituloReseña": "Una mirada profunda a la ciencia",
+    "autor": "Stephen Hawking",
+    "resena": "El autor logra explicar conceptos complejos con claridad. Ideal para quienes se inician en el mundo de la física.",
+    "categoria": "Otro",
+    "puntuacion": 5,
+    "tituloLibro": "Breves respuestas a las grandes preguntas",
+    "imagen": "https://firebasestorage.googleapis.com/v0/b/unniconet.appspot.com/o/imagenes%2F1747353231611_Breves%20respuestas%20a%20las%20grandes%20preguntas.jpg?alt=media&token=b774eade-ed28-491b-b175-dd2618d0a4ed",
+    "id": 1747353232906,
+    "fecha": "2025-05-15T23:53:52.906Z"
+  },
+  {
+    "tituloReseña": "Inspirador de principio a fin",
+    "autor": "Nelson Mandela",
+    "resena": "Una biografía que conmueve y motiva. La historia de superación personal es simplemente increíble.",
+    "categoria": "Biografía",
+    "puntuacion": 4,
+    "tituloLibro": "El largo camino hacia la libertad",
+    "imagen": "https://firebasestorage.googleapis.com/v0/b/unniconet.appspot.com/o/imagenes%2F1747353327172_El%20largo%20camino%20hacia%20la%20libertad.webp?alt=media&token=c9082be9-4a0b-4df4-8364-0d6332a34ce3",
+    "id": 1747353328711,
+    "fecha": "2025-05-15T23:55:28.711Z"
+  },
+  {
+    "tituloReseña": "Un retrato eterno del amor",
+    "autor": "Gabriel García Márquez ",
+    "resena": "Portal de publicación\nde reseñas de libros",
+    "categoria": "Ciencia ficción",
+    "puntuacion": 5,
+    "tituloLibro": "Cien Años de soledad",
+    "imagen": "https://firebasestorage.googleapis.com/v0/b/unniconet.appspot.com/o/imagenes%2F1747358459843_El%20largo%20camino%20hacia%20la%20libertad.webp?alt=media&token=66af8b0f-2075-43e5-8be0-26c9257f129a",
+    "id": 1747358461146,
+    "fecha": "2025-05-16T01:21:01.146Z"
+  }
+]
