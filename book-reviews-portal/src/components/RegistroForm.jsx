@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { createRegistro } from "../services/api"
 import { storage, ref, uploadBytes, getDownloadURL } from "../services/firebaseConfig"
+import { schema } from "../utils"
 
 export default function RegistroForm() {
   const [form, setForm] = useState({ titulo: "", autor: "", resena: "", categoria: "", puntuacion: 1, tituloLibro: "" })
@@ -11,6 +12,8 @@ export default function RegistroForm() {
   const [success, setSuccess] = useState(false)
   const [loading, setLoading] = useState(false)
   const [fileName, setFileName] = useState("")
+  const [fieldErrors, setFieldErrors] = useState({})
+
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -24,48 +27,57 @@ export default function RegistroForm() {
     }
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setError("");
+  setSuccess(false);
+  setFieldErrors({});
 
-    if (!form.titulo || !form.autor || !form.resena || !form.categoria || !form.puntuacion || !form.tituloLibro) {
-      setError("Todos los campos son obligatorios")
-      setLoading(false)
-      return
-    }
+  const validationResult = schema.safeParse({
+    tituloReseña: form.titulo,
+    autor: form.autor,
+    resena: form.resena,
+    categoria: form.categoria,
+    puntuacion: form.puntuacion,
+    tituloLibro: form.tituloLibro,
+  });
 
-    try {
-      let imageUrl = ""
-
-      if (file) {
-        const storageRef = ref(storage, `imagenes/${Date.now()}_${file.name}`)
-        await uploadBytes(storageRef, file)
-        imageUrl = await getDownloadURL(storageRef)
-      }
-
-      const finalForm = {
-        tituloReseña: form.titulo, 
-        autor: form.autor,
-        resena: form.resena,
-        categoria: form.categoria,
-        puntuacion: Number(form.puntuacion), 
-        tituloLibro: form.tituloLibro,
-        imagen: imageUrl
-      }
-
-      await createRegistro(finalForm)
-      setSuccess(true)
-      setForm({ titulo: "", autor: "", resena: "", categoria: "", puntuacion: 1, tituloLibro: "" })
-      setFile(null)
-      setFileName("")
-      setError("")
-    } catch (err) {
-      console.error(err)
-      setError("Error al enviar el registro")
-    } finally {
-      setLoading(false)
-    }
+  if (!validationResult.success) {
+    const formattedErrors = validationResult.error.format();
+    const extractedErrors = Object.fromEntries(
+      Object.entries(formattedErrors).map(([key, val]) => [key, val?._errors?.[0]])
+    );
+    setFieldErrors(extractedErrors);
+    setLoading(false);
+    return;
   }
+
+  try {
+    let imageUrl = "";
+    if (file) {
+      const storageRef = ref(storage, `imagenes/${Date.now()}_${file.name}`);
+      await uploadBytes(storageRef, file);
+      imageUrl = await getDownloadURL(storageRef);
+    }
+
+    const finalForm = {
+      ...validationResult.data,
+      imagen: imageUrl,
+    };
+
+    await createRegistro(finalForm);
+    setSuccess(true);
+    setForm({ titulo: "", autor: "", resena: "", categoria: "", puntuacion: 1, tituloLibro: "" });
+    setFile(null);
+    setFileName("");
+  } catch (err) {
+    console.error(err);
+    setError("Error al enviar el registro");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="bg-white dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800 shadow-sm p-6 max-w- mx-auto">
@@ -97,6 +109,8 @@ export default function RegistroForm() {
               onChange={handleChange}
               
             />
+            {fieldErrors.tituloReseña && <p className="text-red-500 text-sm">{fieldErrors.tituloReseña}</p>}
+
           </div>
 
           <div className="space-y-2">
@@ -110,8 +124,8 @@ export default function RegistroForm() {
               placeholder="Ej: Cien años de soledad"
               value={form.tituloLibro}
               onChange={handleChange}
-              
             />
+            {fieldErrors.tituloLibro && <p className="text-red-500 text-sm">{fieldErrors.tituloLibro}</p>}
           </div>
         </div>
 
@@ -126,9 +140,10 @@ export default function RegistroForm() {
             name="autor"
             placeholder="Ej: Gabriel García Márquez"
             value={form.autor}
-            onChange={handleChange}
-            
+            onChange={handleChange}  
           />
+          {fieldErrors.autor && <p className="text-red-500 text-sm">{fieldErrors.autor}</p>}
+
         </div>
 
         <div className="space-y-2">
@@ -144,6 +159,8 @@ export default function RegistroForm() {
             onChange={handleChange}
             
           />
+          {fieldErrors.resena && <p className="text-red-500 text-sm">{fieldErrors.resena}</p>}
+
         </div>
 
         <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
@@ -173,6 +190,8 @@ export default function RegistroForm() {
               <option value="Historia">Historia</option>
               <option value="Otro">Otro</option>
             </select>
+            {fieldErrors.categoria && <p className="text-red-500 text-sm">{fieldErrors.categoria}</p>}
+
           </div>
 
           <div className="space-y-2">
