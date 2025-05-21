@@ -34,7 +34,6 @@ export const getRegistrosPorCategoria = async (req, res) => {
 
 export const createRegistro = async (req, res) => {
   const parsed = RegistroSchema.safeParse(req.body);
-  console.log(req.body);
 
   if (!parsed.success) {
     console.log("Error de validación:", parsed.error.flatten());

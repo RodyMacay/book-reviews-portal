@@ -64,5 +64,16 @@
     "imagen": "https://firebasestorage.googleapis.com/v0/b/unniconet.appspot.com/o/imagenes%2F1747842535214_diagrama-round-robin-mejorado.png?alt=media&token=4a899ebf-b18c-4f44-a289-29bd2fd902b1",
     "id": 1747842537184,
     "fecha": "2025-05-21T15:48:57.184Z"
+  },
+  {
+    "tituloReseña": "titulo de ejemplo",
+    "autor": "Gabriel García Márquez ",
+    "resena": "efvcfevfv",
+    "categoria": "No ficción",
+    "puntuacion": 1,
+    "tituloLibro": "Cien Años de soledad",
+    "imagen": "",
+    "id": 1747843321559,
+    "fecha": "2025-05-21T16:02:01.559Z"
   }
 ]
