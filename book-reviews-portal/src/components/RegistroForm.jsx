@@ -43,16 +43,14 @@ export default function RegistroForm() {
         imageUrl = await getDownloadURL(storageRef)
       }
 
-      // Transformar los datos según lo esperado por el servidor
       const finalForm = {
-        tituloReseña: form.titulo, // Cambiado de titulo a tituloReseña
+        tituloReseña: form.titulo, 
         autor: form.autor,
         resena: form.resena,
         categoria: form.categoria,
-        puntuacion: Number(form.puntuacion), // Convertir a número
+        puntuacion: Number(form.puntuacion), 
         tituloLibro: form.tituloLibro,
         imagen: imageUrl
-        // La fecha la debe agregar el servidor
       }
 
       await createRegistro(finalForm)
@@ -97,6 +95,7 @@ export default function RegistroForm() {
               placeholder="Ej: Mi reseña sobre..."
               value={form.titulo}
               onChange={handleChange}
+              required
             />
           </div>
 
@@ -111,6 +110,7 @@ export default function RegistroForm() {
               placeholder="Ej: Cien años de soledad"
               value={form.tituloLibro}
               onChange={handleChange}
+              required
             />
           </div>
         </div>
@@ -127,6 +127,7 @@ export default function RegistroForm() {
             placeholder="Ej: Gabriel García Márquez"
             value={form.autor}
             onChange={handleChange}
+            required
           />
         </div>
 
@@ -141,6 +142,7 @@ export default function RegistroForm() {
             placeholder="Comparte tu opinión sobre este libro..."
             value={form.resena}
             onChange={handleChange}
+            required
           />
         </div>
 
@@ -156,6 +158,7 @@ export default function RegistroForm() {
               name="categoria"
               value={form.categoria}
               onChange={handleChange}
+              required
             >
               <option value="" disabled>
                 Selecciona una categoría

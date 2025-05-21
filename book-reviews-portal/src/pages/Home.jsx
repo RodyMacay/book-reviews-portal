@@ -19,7 +19,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
       <div className="bg-zinc-900 dark:bg-zinc-950 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
           <div className="md:flex md:items-center md:justify-between">
@@ -68,7 +67,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Featured Books Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">Reseñas recientes</h2>
@@ -106,7 +104,6 @@ export default function Home() {
         )}
       </div>
 
-      {/* Call to Action */}
       <div className="bg-zinc-100 dark:bg-zinc-900 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-zinc-900 dark:bg-zinc-800 rounded-lg border border-zinc-800 dark:border-zinc-700 shadow-sm overflow-hidden">

@@ -1,4 +1,3 @@
-// services/firebaseConfig.js
 
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
@@ -24,15 +23,12 @@ const firebaseConfig = {
   measurementId: "G-HZ8YLD05R2"
 };
 
-// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 
-// Servicios individuales
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-// Exportar funciones y servicios necesarios
 export {
   auth,
   db,
