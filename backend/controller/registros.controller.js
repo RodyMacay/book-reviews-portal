@@ -3,14 +3,11 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { RegistroSchema } from "../schema/registerSchema.js";
 
-// Obtener __dirname con módulos ES
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Ruta absoluta al archivo registros.json
 const rutaArchivo = path.join(__dirname, "..", "schema", "registros.json");
 
-// GET: Obtener registros
 export const obtenerRegistros = async (req, res) => {
   try {
     const data = await fs.readFile(rutaArchivo, "utf-8");
@@ -21,7 +18,6 @@ export const obtenerRegistros = async (req, res) => {
   }
 };
 
-// GET: Obtener registros por categoría
 export const getRegistrosPorCategoria = async (req, res) => {
   try {
     const { categoria } = req.params;
@@ -36,7 +32,6 @@ export const getRegistrosPorCategoria = async (req, res) => {
   }
 };
 
-// POST: Crear un nuevo registro
 export const createRegistro = async (req, res) => {
   const parsed = RegistroSchema.safeParse(req.body);
   console.log(req.body);
@@ -52,11 +47,10 @@ export const createRegistro = async (req, res) => {
   try {
     const data = JSON.parse(await fs.readFile(rutaArchivo, "utf-8"));
 
-    // Se agrega la fecha de creación al registro
     const nuevoRegistro = {
       ...parsed.data,
       id: Date.now(),
-      fecha: new Date(), // Asignar la fecha actual
+      fecha: new Date(),
     };
 
     data.push(nuevoRegistro);
